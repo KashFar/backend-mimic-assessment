@@ -52,9 +52,8 @@ __author__ = "KashFar"
 def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
     mimic_dict = {}
-    f = open(filename, 'r')
-    text = f.read()
-    f.close()
+    with open(filename, 'r') as opened_file:
+    text = opened_file.read()
     words = text.split()
     previous = ''
     for word in words:
@@ -67,7 +66,7 @@ def mimic_dict(filename):
 
 def print_mimic(mimic_dict, word):
     """Given mimic dict and start word, prints 200 random words."""
-    for i in range(200):
+    for i in range(201):
         print word,
         next_word = mimic_dict.get(word)
         if not next_word:
